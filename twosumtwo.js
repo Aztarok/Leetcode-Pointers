@@ -1,18 +1,21 @@
 let twoSum = function(numbers, target) {
     let final = [];
-    for (let i = 0; i < numbers.length-1; i++) {
-        let first = numbers[i];
-        let second = numbers[i+1];
-        console.log(first);
-        console.log(second);
-        if (first + second === target) {
-            final.push(i + 1, i + 2);
+    let left = 0;
+    let right = numbers.length-1;
+    while (left < right) {
+        if (numbers[left] + numbers[right] > target) {
+            right--;
+        } else if (numbers[left] + numbers[right] < target) {
+            left++;
+        } else {
+            final.push(left + 1, right + 1);
+            break;
         }
     }
     return final;
 };
 
-let nums = [2, 3, 4];
-let mark = 6;
+let nums = [2, 7, 11, 15];
+let mark = 18;
 
 console.log(twoSum(nums, mark));
